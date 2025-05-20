@@ -105,7 +105,7 @@
         <intent-filter android:autoVerify="true">
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
-            <data android:scheme="smartchickencare" android:host="approved" />
+            <data android:scheme="fluffyfavourites" android:host="approved" />
         </intent-filter>
       </activity>
     </application>
