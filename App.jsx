@@ -620,6 +620,14 @@ const App = () => {
                   const formatSubIds = (source) =>
                         source.split('_').map((part, i) => `subId${i + 1}=${part}`).join('&');
 
+                  const formatFbSubIds = (source) => {
+                        const queryPart = source.split('approved?')[1] || '';
+                        return queryPart
+                          .split('_')
+                          .map((part, i) => `subId${i + 1}=${part}`)
+                          .join('&');
+                      };
+
                   const buildOptionalParams = () =>
                         [afSiteid && `af_siteid=${afSiteid}`, afAd && `af_ad=${afAd}`, mediaSource && `media_source=${mediaSource}`, afChannel && `af_channel=${afChannel}`, checkApsData && `checkData=${checkApsData}`]
                               .filter(Boolean)
@@ -636,7 +644,7 @@ const App = () => {
                               additionalParams = `testParam=CONVERT-SUBS-MISSING-SPLITTER&checkData=${checkApsData}`;
                         }
                   } else if (fbDeepLink && fbDeepLink.includes('_')) {
-                        additionalParams = `${formatSubIds(fbDeepLink)}&testParam=DEPLINK`;
+                        additionalParams = `${formatFbSubIds(fbDeepLink)}&testParam=DEPLINK`;
                   } else {
                         additionalParams = `testParam=ORGANIC`;
                   }
